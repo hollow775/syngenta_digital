@@ -29,12 +29,16 @@ def get_cheapest_hotel(number):
     bridgewood = bridgewood_prices[start_position]*pay_weekdays + bridgewood_prices[start_position+1] * pay_weekend
     ridgewood = ridgewood_prices[start_position]*pay_weekdays + ridgewood_prices[start_position+1]*pay_weekend
 
-    if(lakewood < bridgewood and lakewood < ridgewood):
-        cheapest_hotel = "Lakewood"
-    if(bridgewood < lakewood and bridgewood < ridgewood or lakewood == bridgewood):
-        cheapest_hotel = "Bridgewood"
-    if((ridgewood < lakewood and ridgewood < bridgewood) or lakewood == ridgewood or bridgewood == ridgewood):
-        cheapest_hotel = "Ridgewood"
+    if(lakewood < bridgewood):
+        if(lakewood < ridgewood):
+            cheapest_hotel = 'Lakewood'
+        else:
+            cheapest_hotel = 'Ridgewood'
+    else:
+        if(bridgewood < ridgewood):
+            cheapest_hotel = 'Bridgewood'
+        else:
+            cheapest_hotel = 'Ridgewood'
     #DO NOT change the function's name
     return cheapest_hotel
 
